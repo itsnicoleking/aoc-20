@@ -70,3 +70,4 @@ with open('./inputs/day4_input.txt', 'r') as file:
   
   print ('Part 2:', numValid-1) # TODO: why -1 ??? :(
     # https://www.reddit.com/r/adventofcode/comments/k6e8sw/2020_day_04_solutions/gfaqxdk/
+    # needed to check size aswell; i.e. \d{9} will still match size of 10
