@@ -38,15 +38,20 @@ while i < len(lineList):
   
   i += 1
   
-print ('Part 1:', (abs(ns) + abs(ew)))
+print ('Part 1:', (abs(ew) + abs(ns)))
 
 
 # Part 2
 def rotate(origin, point, angle):
   ox, oy = origin
   px, py = point
-  qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
-  qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
+  cos = math.cos(angle)
+  sin = math.sin(angle)
+  xdiff = px - ox
+  ydiff = py - oy
+  
+  qx = ox + cos * xdiff - sin * ydiff
+  qy = oy + sin * xdiff + cos * ydiff
   return qx, qy
 
 shipNS = 0
@@ -58,8 +63,8 @@ j = 0
 while j < len(lineList):
   instruction = lineList[j][:1]
   value = int(lineList[j][1:])
-  pt = (wayptEW, wayptNS)
   og = (shipEW, shipNS)
+  pt = (wayptEW, wayptNS)
   
   if instruction == 'N':
     wayptNS += value
@@ -88,6 +93,4 @@ while j < len(lineList):
   
   j += 1
 
-print ('Part 2:', (abs(shipNS) + abs(shipEW)))
-
-
+print ('Part 2:', (abs(shipEW) + abs(shipNS)))
