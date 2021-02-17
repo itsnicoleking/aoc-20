@@ -56,7 +56,7 @@ validTickets = []
 def addIfValidTicket(line):
   ticket = [int(x) for x in line.split(',')]
   ticketValid = True
-  for num in ticket: # for each number in nearby ticket
+  for num in ticket: # for each number in ticket
     valid = False
     for key in fields:
       if num in fields[key]: # is it valid for any field
@@ -95,7 +95,7 @@ for line in lineList:
 
 # Get values in each column of ticket
 # i.e. [[a,b,c], [d,e,f]] => [(a,d), (b,e), (c,f)]
-ticketCols = list(zip(*validTickets))
+ticketCols = list(zip(*validTickets)) # TODO: why does this need unpacking operator * ?
 
 possiblePositions = {field: [] for field in fields.keys()}
 
