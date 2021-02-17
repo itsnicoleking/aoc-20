@@ -29,3 +29,7 @@ print('Part1:', sum([mem[i] for i in mem]))
 #     val = val | (2 ** (36 - i - 1))
 # elif v == '0':
 #     val = val & ~(2 ** (36 - i - 1))
+
+
+# https://www.reddit.com/r/adventofcode/comments/kcr1ct/2020_day_14_solutions/
+# https://github.com/mariothedog/Advent-of-Code-2020/blob/main/Day%2014/day_14.py
