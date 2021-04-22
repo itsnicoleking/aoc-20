@@ -70,8 +70,8 @@ for each in partTwoInput:
 
 
 # Part 2, attempt 2
-# still bad, estimate ~60hrs
-def playMovesPartTwoNot69Days(theDictionary, numMoves, initialCurrentCupKey):
+# 7-8 seconds
+def playMovesPartTwoNot69Days(mn, mx, theDictionary, numMoves, initialCurrentCupKey):
   currentCupKey = initialCurrentCupKey
   for move in range(1, numMoves+1):
     # get the next 3 cups after current
@@ -85,13 +85,11 @@ def playMovesPartTwoNot69Days(theDictionary, numMoves, initialCurrentCupKey):
     
     # get destination cup
     destKey = currentCupKey - 1
-    while destKey < min(partTwoInput) or destKey in pickup:
+    while destKey < mn or destKey in pickup:
       destKey -= 1
-      if destKey < min(partTwoInput):
-        destKey = max(partTwoInput)
+      if destKey < mn:
+        destKey = mx
         
-    # print('curr ', currentCupKey, '   dest ', destKey, '   nextCurr ', nextCurrentCupKey, '   3 ', the, nex, thr)
-    
     theDictionary[currentCupKey] = theDictionary[thr] # current point to +4
     theDictionary[thr] = theDictionary[destKey] # last of pickup point to dest+1
     theDictionary[destKey] = the # dest point to current+1
@@ -116,6 +114,6 @@ betterStructure[partTwoInput[-1]] = partTwoInput[0]
 
 # play all moves
 start = time.time()
-print('Part 2:', playMovesPartTwoNot69Days(betterStructure, 10000000, partTwoInput[0]))
+print('Part 2:', playMovesPartTwoNot69Days(min(partTwoInput), max(partTwoInput), betterStructure, 10000000, partTwoInput[0]))
 end = time.time()
 print(str(datetime.timedelta(seconds=(end-start))))
